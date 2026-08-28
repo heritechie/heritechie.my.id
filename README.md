@@ -68,4 +68,4 @@ The portfolio intentionally emphasizes:
 It avoids presenting private professional work as an open-source project.
 
 ## Assets
-Project visuals are local SVG assets under `public/assets/projects/`, so the site has no external image dependency.
+Project visuals are local PNG assets under `public/assets/projects/`, so the site has no external image dependency.

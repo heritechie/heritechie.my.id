@@ -5,39 +5,60 @@ const domains = [
     number: "01",
     title: "Fintech & Credit Systems",
     label: "PROFESSIONAL EXPERIENCE",
-    text: "Building backend systems for loan onboarding, eligibility, credit assessment, and decisioning, integrating multiple financial data sources and external credit bureaus.",
+    subtitle: "Lending · Credit Assessment · Decision Workflows",
+    text: "Building systems that support lending operations, from loan onboarding and credit assessment to eligibility, scoring, and operational decision workflows.",
     focus: [
       "Credit Assessment",
-      "Credit Decisioning",
-      "Financial Data",
-      "Backend Systems",
+      "Lending Systems",
+      "Decision Workflows",
+      "Backoffice Systems",
     ],
+    flow: { rows: [["INPUT", "ASSESSMENT", "DECISION"]] },
   },
   {
     number: "02",
-    title: "Workflow Automation & Integration",
+    title: "System Integration",
     label: "PROFESSIONAL EXPERIENCE",
-    text: "Designing business workflows that connect services, APIs, external systems, and operational processes using automation platforms and custom integrations.",
-    focus: ["n8n", "Zapier", "APIs", "Webhooks"],
+    subtitle: "APIs · External Data · Service Integration",
+    text: "Connecting business systems, internal services, and external data sources into reliable workflows that support real operational processes.",
+    focus: [
+      "API Integration",
+      "Service Integration",
+      "External Data",
+      "Data Synchronization",
+    ],
+    flow: { rows: [["SERVICE", "API", "SERVICE"], ["DATA"]] },
   },
   {
     number: "03",
-    title: "Application Security & Compliance",
-    label: "CURRENTLY EXPLORING",
-    text: "Deepening application security and compliance knowledge through Siberin, an ongoing independent engineering project.",
-    focus: ["SAST", "API Security", "WAF", "SIEM", "Compliance"],
+    title: "Workflow Automation",
+    label: "PROFESSIONAL EXPERIENCE",
+    subtitle: "Business Processes · n8n · Zapier",
+    text: "Turning multi-step operational processes into automated workflows across APIs, services, data sources, and business rules.",
+    focus: [
+      "Workflow Orchestration",
+      "Business Automation",
+      "Scheduled Processing",
+      "API-driven Workflows",
+    ],
+    flow: { rows: [["TRIGGER", "PROCESS", "DECISION", "ACTION"]] },
   },
   {
     number: "04",
-    title: "Geospatial Infrastructure",
-    label: "SIDE PROJECT · ONGOING",
-    text: "Building Indonesia-focused geospatial infrastructure around administrative regions, postal areas, reverse geocoding, and business-defined territories.",
+    title: "Application Security & Compliance",
+    label: "CURRENTLY EXPLORING",
+    subtitle: "Application Security · Security Controls · Compliance",
+    text: "Exploring practical approaches to application security and compliance, with a focus on integrating security into real-world application and engineering workflows.",
     focus: [
-      "Indonesia",
-      "Administrative Data",
-      "Reverse Geocoding",
-      "Territories",
+      "Application Security",
+      "Security Assessment",
+      "Security Controls",
+      "Compliance",
     ],
+    flow: {
+      rows: [["APPLICATION"], ["AUTH", "DATA", "API"], ["SECURITY CONTROL"]],
+      frame: true,
+    },
   },
 ];
 
@@ -46,29 +67,29 @@ const projects = [
     number: "01",
     title: "Credit Assessment",
     label: "PROFESSIONAL EXPERIENCE",
-    text: "Credit assessment and decisioning system for fintech lending, integrating financial data sources, credit bureaus, and multiple eligibility checks.",
-    asset: "credit-assessment.svg",
+    text: "Credit assessment and decisioning for fintech lending, orchestrating financial data integrations, eligibility checks, and scoring into structured credit decisions.",
+    asset: "credit-assessment.png",
   },
   {
     number: "02",
     title: "Siberin",
     label: "SECURITY ENGINEERING · ONGOING",
-    text: "Practical exploration of application security, API security, security analysis, compliance-oriented controls, and orchestrated security workflows.",
-    asset: "siberin.svg",
+    text: "Application security engineering and analysis, combining SAST, API security, WAF context, and SIEM log analysis within security and compliance workflows.",
+    asset: "siberin.png",
   },
   {
     number: "03",
     title: "Zonatic",
     label: "SIDE PROJECT · ONGOING",
-    text: "Indonesia-focused geospatial infrastructure designed for administrative-region lookup, reverse geocoding, and custom business territories.",
-    asset: "zonatic.svg",
+    text: "Indonesia-focused geospatial infrastructure, with structured administrative-region data, reverse geocoding, and location lookup for reliable geographic systems.",
+    asset: "zonatic.png",
   },
   {
     number: "04",
     title: "Wadidaw",
     label: "IN DEVELOPMENT",
-    text: "WhatsApp-based AI assistant for turning natural-language financial messages into structured transactions and automated workflows.",
-    asset: "wadidaw.svg",
+    text: "WhatsApp-based AI assistant for handling everyday tasks through natural language, from finance and job search to learning, travel, and general assistance.",
+    asset: "wadidaw.png",
   },
 ];
 
@@ -86,7 +107,7 @@ const approach = [
 
 const technology = [
   ["Backend", "Node.js · TypeScript · Go"],
-  ["Data", "PostgreSQL · MySQL · Redis"],
+  ["Data", "PostgreSQL · MySQL · MongoDB"],
   ["Workflow", "n8n · Zapier · Temporal"],
   ["Infrastructure", "Docker · Kubernetes"],
   ["Frontend", "React · Vue"],
@@ -171,7 +192,7 @@ function App() {
           <div className="hero-visual">
             <div className="hero-art">
               <img
-                src="/assets/hero/wide_dark_futuristic_tech_illustration_on_a_deep_n.png"
+                src="/assets/hero/hero-section.png"
                 alt="Software engineering systems illustration"
               />
             </div>
@@ -183,6 +204,10 @@ function App() {
             eyebrow="WHAT I WORK ON"
             title="Domains, not just technologies."
           />
+          <p className="lead">
+            I build business-critical systems where software, data,
+            integrations, and operational workflows come together.
+          </p>
           <div className="domain-grid">
             {domains.map((domain) => (
               <article className="domain-card" key={domain.number}>
@@ -190,7 +215,9 @@ function App() {
                   <span>{domain.number}</span>
                   <p>{domain.label}</p>
                 </div>
+                <DomainFlow rows={domain.flow.rows} frame={domain.flow.frame} />
                 <h3>{domain.title}</h3>
+                <p className="domain-subtitle">{domain.subtitle}</p>
                 <p className="domain-text">{domain.text}</p>
                 <div className="domain-focus">
                   {domain.focus.map((x) => (
@@ -211,7 +238,7 @@ function App() {
             {projects.map((item) => (
               <article className="project" key={item.number}>
                 <div className="project-image">
-                  <img src={`/assets/projects/${item.asset}`} alt="" />
+                  <img src={`/assets/projects/${item.asset}`} alt={item.title} />
                 </div>
                 <span className="project-no">{item.number}</span>
                 <p className="project-label">{item.label}</p>
@@ -264,12 +291,12 @@ function App() {
             <div className="exploring-tags">
               {[
                 "SAST",
+                "DAST",
                 "API Security",
                 "WAF",
                 "SIEM",
                 "Security Testing",
                 "Compliance",
-                "Temporal",
               ].map((x) => (
                 <span key={x}>{x}</span>
               ))}
@@ -366,7 +393,6 @@ function App() {
 
       <footer className="footer shell">
         <span>© {new Date().getFullYear()} Heriyanto</span>
-        <span>Built with React + TypeScript</span>
       </footer>
 
       {project && (
@@ -399,6 +425,136 @@ function App() {
         </div>
       )}
     </>
+  );
+}
+
+function DomainFlow({
+  rows,
+  frame = false,
+}: {
+  rows: string[][];
+  frame?: boolean;
+}) {
+  const CW = 240;
+  const CH = 64;
+  const maxCols = Math.max(...rows.map((r) => r.length), 1);
+  const font = maxCols > 3 ? 6 : 7;
+  const nodeH = rows.length === 1 ? 24 : rows.length === 2 ? 20 : 14;
+  const gap = maxCols > 3 ? 12 : 16;
+  const nw = (s: string) =>
+    Math.max(34, Math.min(110, Math.round(s.length * 3.7) + 10));
+  const rowWidth = (row: string[]) =>
+    row.reduce((acc, label, i) => acc + nw(label) + (i ? gap : 0), 0);
+  const rowY = (i: number) =>
+    rows.length === 1
+      ? (CH - nodeH) / 2
+      : rows.length === 2
+        ? 8 + i * 30
+        : 5 + i * 19;
+
+  const boxes = rows.map((row, i) => {
+    let cx = (CW - rowWidth(row)) / 2;
+    return row.map((label) => {
+      const w = nw(label);
+      const box = { cx: cx + w / 2, x: cx, y: rowY(i), w, label };
+      cx += w + gap;
+      return box;
+    });
+  });
+
+  const terminal = rows[rows.length - 1][rows[rows.length - 1].length - 1];
+
+  return (
+    <svg
+      className="domain-flow"
+      viewBox={`0 0 ${CW} ${CH}`}
+      role="presentation"
+      aria-hidden="true"
+    >
+      {frame && (
+        <rect
+          x={2}
+          y={2}
+          width={CW - 4}
+          height={CH - 4}
+          rx={12}
+          fill="none"
+          stroke="var(--border)"
+          strokeOpacity={0.55}
+          strokeDasharray="1 4"
+        />
+      )}
+      {rows.map((row, i) =>
+        row.map((label, j) => {
+          const b = boxes[i][j];
+          const term = i === rows.length - 1 && label === terminal;
+          return (
+            <g key={`n-${i}-${j}`}>
+              <rect
+                x={b.x}
+                y={b.y}
+                width={b.w}
+                height={nodeH}
+                rx={5}
+                fill="var(--panel2)"
+                stroke={term ? "var(--accent)" : "var(--border)"}
+                strokeOpacity={term ? 0.55 : 1}
+              />
+              <text
+                x={b.cx}
+                y={b.y + nodeH / 2}
+                dy="0.35em"
+                textAnchor="middle"
+                fontFamily="monospace"
+                fontWeight={700}
+                fontSize={font}
+                fill={term ? "var(--accent)" : "var(--muted)"}
+                opacity={term ? 0.9 : 0.95}
+              >
+                {label}
+              </text>
+            </g>
+          );
+        }),
+      )}
+      {rows.map((row, i) =>
+        row.slice(0, -1).map((_, j) => {
+          const a = boxes[i][j];
+          const b = boxes[i][j + 1];
+          const midY = a.y + nodeH / 2;
+          return (
+            <g key={`h-${i}-${j}`} stroke="var(--border)">
+              <line x1={a.x + a.w} y1={midY} x2={b.x} y2={midY} />
+              <path
+                d={`M ${b.x - 3} ${midY - 2.5} L ${b.x - 1} ${midY} L ${b.x - 3} ${midY + 2.5}`}
+                fill="var(--border)"
+                stroke="none"
+              />
+            </g>
+          );
+        }),
+      )}
+      {rows.slice(0, -1).map((_, i) => {
+        const top = boxes[i];
+        const bottom = boxes[i + 1];
+        const cx =
+          (top.reduce((acc, b) => acc + b.cx, 0) / top.length +
+            bottom.reduce((acc, b) => acc + b.cx, 0) / bottom.length) /
+          2;
+        const y1 = rowY(i) + nodeH;
+        const y2 = rowY(i + 1);
+        return (
+          <g key={`v-${i}`} stroke="var(--border)">
+            <line x1={cx} y1={y1} x2={cx} y2={y2} />
+            <path
+              d={`M ${cx - 2.5} ${y2 - 3} L ${cx} ${y2 - 1} L ${cx + 2.5} ${y2 - 3}`}
+              fill="var(--border)"
+              stroke="none"
+            />
+          </g>
+        );
+      })}
+    </svg>
   );
 }
 
