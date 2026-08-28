@@ -192,7 +192,7 @@ button {
   opacity: 1;
   mix-blend-mode: normal;
 }
-.hero-background::after {
+.hero-background::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -209,6 +209,34 @@ button {
       rgba(3, 9, 13, var(--oa3, 0.18)) var(--ov3, 68%),
       rgba(3, 9, 13, var(--oa4, 0.42)) 100%
     );
+}
+.hero-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.09;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(141, 160, 168, 0.5) 0 1px,
+      transparent 1px 58px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(141, 160, 168, 0.5) 0 1px,
+      transparent 1px 58px
+    ),
+    radial-gradient(rgba(141, 160, 168, 0.6) 0.8px, transparent 1.7px);
+  background-size: 58px 58px, 58px 58px, 116px 116px;
+  background-position: 0 0, 0 0, 29px 29px;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 36%,
+    rgba(0, 0, 0, 0) 74%
+  );
+  mask-image: linear-gradient(90deg, #000 0%, #000 36%, rgba(0, 0, 0, 0) 74%);
 }
 .eyebrow {
   margin: 0 0 17px;
@@ -707,6 +735,9 @@ h1 em {
     object-fit: contain;
     object-position: 100% 50%;
   }
+  .hero-background::after {
+    opacity: 0.05;
+  }
   .approach-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -781,6 +812,9 @@ h1 em {
   .hero-background img {
     object-fit: contain;
     object-position: 100% 42%;
+  }
+  .hero-background::after {
+    display: none;
   }
   .projects,
   .domain-grid,
