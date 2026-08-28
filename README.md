@@ -29,6 +29,22 @@ The project is static after build and can be deployed to:
 - Cloudflare Pages
 - GitHub Pages
 
+## Cloudflare Pages Deployment
+
+- **GitHub repository:** [heritechie/heritechie.my.id](https://github.com/heritechie/heritechie.my.id)
+- **Framework preset:** None required (Vite build is inferred)
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+- **Node.js version:** `^20.19.0 || >=22.12.0` (set `NODE_VERSION` in the project build settings)
+- **Environment variables:** none required at build time
+
+To deploy:
+
+1. In the Cloudflare dashboard, create a new **Pages** project and connect the GitHub repository above.
+2. Set the build command to `npm run build` and the output directory to `dist`.
+3. Confirm the Node.js version in the build settings satisfies the requirement above (default is usually fine).
+4. Deploy. The site is fully static — no Workers runtime or functions configuration is needed.
+
 ## Before publishing
 
 1. Replace any project descriptions that need correction.
