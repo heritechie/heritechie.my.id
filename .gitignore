@@ -1,0 +1,20 @@
+node_modules
+dist
+.vite
+*.local
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# OS / editor temporary files
+*.swp
+*.swo
+*~
+*.tmp
+*.log
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*:Zone.Identifier
