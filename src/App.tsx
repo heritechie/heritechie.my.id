@@ -247,7 +247,13 @@ function App() {
                 <p>{item.text}</p>
                 <div className="project-footer">
                   {item.title === "Credit Assessment" ? (
-                    <a href="/oss/credora/">Case Study →</a>
+                    <a
+                      href="/oss/credora/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Case Study →
+                    </a>
                   ) : (
                     <button onClick={() => setProject(item)}>Case Study →</button>
                   )}
