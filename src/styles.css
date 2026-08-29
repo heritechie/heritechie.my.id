@@ -458,13 +458,17 @@ h1 em {
   color: #71838a;
   font-size: 11px;
 }
-.project-footer button {
+.project-footer button,
+.project-footer a {
   border: 0;
   background: none;
   color: #dbe5e7;
   padding: 0;
+  text-decoration: none;
+  cursor: pointer;
 }
-.project-footer button:hover {
+.project-footer button:hover,
+.project-footer a:hover {
   color: var(--accent);
 }
 

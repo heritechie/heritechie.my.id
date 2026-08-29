@@ -246,7 +246,11 @@ function App() {
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
                 <div className="project-footer">
-                  <button onClick={() => setProject(item)}>Case Study →</button>
+                  {item.title === "Credit Assessment" ? (
+                    <a href="/oss/credora/">Case Study →</a>
+                  ) : (
+                    <button onClick={() => setProject(item)}>Case Study →</button>
+                  )}
                   <span>
                     {item.title === "Credit Assessment"
                       ? "Confidential"
